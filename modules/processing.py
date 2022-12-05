@@ -832,6 +832,10 @@ class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
         samples = self.sampler.sample(self, x, conditioning, unconditional_conditioning, image_conditioning=self.txt2img_image_conditioning(x))
 
         if not self.enable_hr:
+            x = create_random_tensors([opt_C, self.height // opt_f, self.width // opt_f], seeds=seeds, subseeds=subseeds, subseed_strength=self.subseed_strength, seed_resize_from_h=self.seed_resize_from_h, seed_resize_from_w=self.seed_resize_from_w, p=self)
+            if hasattr(self, 'init_latent'):
+                x = (x * self.seed_strength) + (self.init_latent.to(shared.device) * (1 - self.seed_strength))
+            samples = self.sampler.sample(self, x, conditioning, unconditional_conditioning, image_conditioning=self.txt2img_image_conditioning(x))
             return samples
 
         target_width = self.hr_upscale_to_x

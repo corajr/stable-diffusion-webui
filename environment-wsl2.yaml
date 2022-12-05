@@ -1,11 +1,47 @@
-name: automatic
+name: automatic-audiolatents
 channels:
   - pytorch
-  - defaults
+  - nvidia
+  - xformers/label/dev
 dependencies:
-  - python=3.10
-  - pip=22.2.2
-  - cudatoolkit=11.3
-  - pytorch=1.12.1
-  - torchvision=0.13.1
-  - numpy=1.23.1
+  - python=3.9
+  - pip
+  - pytorch
+  - pytorch-cuda
+  - torchvision
+  - ffmpeg
+  - xformers
+  - llvmlite
+  - numpy
+  - protobuf
+  - grpcio
+  - imageio
+  - sentencepiece
+  - tensorflow
+  - tensorboard
+  - absl-py
+  - accelerate
+  - addict
+  - aiohttp
+  - aiosignal
+  - albumentations
+  - anyio
+  - astunparse
+  - async-timeout
+  - blas
+  - diffusers
+  - einops
+  - fairscale
+  - fastapi
+  - ffmpeg
+  - flatbuffers
+  - ftfy
+  - gast
+  - gdown
+  - pip:
+    - bitsandbytes
+    - gfpgan
+    - librosa
+    - open-clip-torch
+    - srt
+    - git+https://github.com/openai/CLIP.git@main#egg=clip
